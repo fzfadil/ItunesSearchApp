@@ -1,0 +1,6 @@
+framework module Pods_altamira {
+  umbrella header "Pods-altamira-umbrella.h"
+
+  export *
+  module * { export * }
+}
