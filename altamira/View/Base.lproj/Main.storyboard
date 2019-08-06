@@ -26,6 +26,9 @@
                                 <rect key="frame" x="0.0" y="121" width="320" height="447"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="RLl-cw-63e">
+                                <rect key="frame" x="0.0" y="121" width="320" height="447"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -34,14 +37,19 @@
                             <constraint firstItem="SLf-B8-gTV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9hq-xi-tvq"/>
                             <constraint firstItem="fb7-dV-1tQ" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.1" id="DIS-el-2J6"/>
                             <constraint firstItem="fb7-dV-1tQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="DeD-yv-nGs"/>
+                            <constraint firstItem="RLl-cw-63e" firstAttribute="centerX" secondItem="SLf-B8-gTV" secondAttribute="centerX" id="JDO-CV-7ex"/>
+                            <constraint firstItem="RLl-cw-63e" firstAttribute="width" secondItem="SLf-B8-gTV" secondAttribute="width" id="XDr-6q-5gl"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="SLf-B8-gTV" secondAttribute="bottom" id="YeZ-OH-EEB"/>
+                            <constraint firstItem="RLl-cw-63e" firstAttribute="centerY" secondItem="SLf-B8-gTV" secondAttribute="centerY" id="dmS-Fc-fzl"/>
                             <constraint firstItem="SLf-B8-gTV" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="hJs-dW-wTr"/>
+                            <constraint firstItem="RLl-cw-63e" firstAttribute="height" secondItem="SLf-B8-gTV" secondAttribute="height" id="mOk-eP-QBa"/>
                             <constraint firstItem="fb7-dV-1tQ" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="vvd-Na-VV0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Altamira" id="RLo-hO-V58"/>
                     <connections>
+                        <outlet property="indicator" destination="RLl-cw-63e" id="f6c-T3-Mts"/>
                         <outlet property="searchBar" destination="fb7-dV-1tQ" id="1Io-Re-RXF"/>
                         <outlet property="tableView" destination="SLf-B8-gTV" id="BwD-sZ-4rR"/>
                     </connections>
@@ -90,6 +98,7 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="JJL-lU-js6">
                                                 <rect key="frame" x="135" y="34" width="135" height="0.0"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>

@@ -14,6 +14,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
     
     let apiManager = ApiManager()
     let helper = Helper.sharedHelper
@@ -41,6 +42,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         allSelectedIds = UserDefaults.standard.object(forKey: "selectedIds") as? [Int] ?? allSelectedIds
         selectedIds = allSelectedIds
+        
+        indicator.isHidden = true
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -56,7 +59,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         apiManager.makeRequestForSearch(parameters: parameters) { (JSON) in
             if JSON != nil {
                 //print(JSON as Any)
-                
+                self.indicator.stopAnimating()
+                self.indicator.hidesWhenStopped = true
                 var data = (JSON?.dictionaryObject)!
                 if (data["resultCount"] as? Int) != 0 {
                     self.filteredDataCount = data["resultCount"] as! Int
@@ -64,22 +68,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     self.tableView.reloadData()
                 } else {
                     let alert = UIAlertController(title: "INFO", message: "Not found anything", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "CANCEL", style: .cancel, handler: nil))
-                    
+                
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+                        self.filteredDataCount = 0
+                        self.filteredData = []
+                        self.tableView.reloadData()
                     }))
                     
                     self.present(alert, animated: true)
+                    
                 }
-            } else {
-            
-                let alert = UIAlertController(title: "INFO", message: "Not found anything", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "CANCEL", style: .cancel, handler: nil))
-                
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
-                }))
-                
-                self.present(alert, animated: true)
             }
         }
     }
@@ -153,6 +151,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         
+        indicator.isHidden = false
+        indicator.startAnimating()
         searchText = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
         searchText = searchText.replacingOccurrences(of: " ", with: "+", options: .literal, range: nil)
         var params = ["term":searchText]
