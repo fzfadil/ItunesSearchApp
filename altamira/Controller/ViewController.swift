@@ -58,11 +58,28 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 //print(JSON as Any)
                 
                 var data = (JSON?.dictionaryObject)!
-                if data["resultCount"] != nil {
+                if (data["resultCount"] as? Int) != 0 {
                     self.filteredDataCount = data["resultCount"] as! Int
                     self.filteredData = data["results"] as! [[String : Any]]
                     self.tableView.reloadData()
+                } else {
+                    let alert = UIAlertController(title: "INFO", message: "Not found anything", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "CANCEL", style: .cancel, handler: nil))
+                    
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+                    }))
+                    
+                    self.present(alert, animated: true)
                 }
+            } else {
+            
+                let alert = UIAlertController(title: "INFO", message: "Not found anything", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "CANCEL", style: .cancel, handler: nil))
+                
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+                }))
+                
+                self.present(alert, animated: true)
             }
         }
     }
@@ -193,15 +210,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if filteredData[indexPath.row]["trackId"] != nil {
             selectedIds.append(filteredData[indexPath.row]["trackId"] as! Int)
         }
-        let detailVc = self.storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
         
-        detailVc.detailedData = filteredData[indexPath.row]
-        
-        let backItem = UIBarButtonItem()
-        backItem.title = ""
-        self.navigationItem.backBarButtonItem = backItem
-        
-        self.navigationController?.pushViewController(detailVc, animated: true)
+        DispatchQueue.main.async {
+            let detailVc = self.storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
+            
+            detailVc.detailedData = self.filteredData[indexPath.row]
+            
+            let backItem = UIBarButtonItem()
+            backItem.title = ""
+            self.navigationItem.backBarButtonItem = backItem
+            
+            self.navigationController?.pushViewController(detailVc, animated: true)
+        }
+       
     }
 
 }
