@@ -38,7 +38,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.allowsMultipleSelection = true
         tableView.register(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: "CustomTableViewCell")
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "filter"), style: .plain, target: self, action: #selector(openFilterPopup))
+        changeRightButtonTitle(title: entityType.uppercased())
         
         allSelectedIds = UserDefaults.standard.object(forKey: "selectedIds") as? [Int] ?? allSelectedIds
         selectedIds = allSelectedIds
@@ -52,6 +52,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if selectedIds.isEmpty == false {
              UserDefaults.standard.set(selectedIds, forKey: "selectedIds")
         }
+    }
+    
+    func changeRightButtonTitle(title : String) {
+        
+        let barButtonItem = UIBarButtonItem(title: "Filter (" + title + ")", style: .plain, target: self, action: #selector(openFilterPopup))
+        barButtonItem.tintColor = UIColor.blue
+        navigationItem.rightBarButtonItem = barButtonItem
     }
     
     func makeSearch(parameters: [String: Any]) {
@@ -92,51 +99,61 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         alert.addAction(UIAlertAction(title:"all", style: .default , handler:{ (UIAlertAction)in
             self.entityType = "all"
             self.searchBarTextDidEndEditing(self.searchBar)
+            self.changeRightButtonTitle(title: self.entityType.uppercased())
         }))
         
         alert.addAction(UIAlertAction(title:"movie", style: .default , handler:{ (UIAlertAction)in
-             self.entityType = "movie"
+            self.entityType = "movie"
+            self.changeRightButtonTitle(title: self.entityType.uppercased())
             self.searchBarTextDidEndEditing(self.searchBar)
         }))
         
         alert.addAction(UIAlertAction(title:"podcast", style: .default , handler:{ (UIAlertAction)in
             self.entityType = "podcast"
             self.searchBarTextDidEndEditing(self.searchBar)
+            self.changeRightButtonTitle(title: self.entityType.uppercased())
         }))
         
         alert.addAction(UIAlertAction(title:"music", style: .default , handler:{ (UIAlertAction)in
             self.entityType = "song"
             self.searchBarTextDidEndEditing(self.searchBar)
+            self.changeRightButtonTitle(title: self.entityType.uppercased())
         }))
         
         alert.addAction(UIAlertAction(title:"musicVideo", style: .default , handler:{ (UIAlertAction)in
             self.entityType = "musicVideo"
             self.searchBarTextDidEndEditing(self.searchBar)
+            self.changeRightButtonTitle(title: self.entityType.uppercased())
         }))
         
         alert.addAction(UIAlertAction(title:"audiobook", style: .default , handler:{ (UIAlertAction)in
             self.entityType = "audiobook"
             self.searchBarTextDidEndEditing(self.searchBar)
+            self.changeRightButtonTitle(title: self.entityType.uppercased())
         }))
         
         alert.addAction(UIAlertAction(title:"shortFilm", style: .default , handler:{ (UIAlertAction)in
             self.entityType = "shortFilm"
             self.searchBarTextDidEndEditing(self.searchBar)
+            self.changeRightButtonTitle(title: self.entityType.uppercased())
         }))
         
         alert.addAction(UIAlertAction(title:"tvShow", style: .default , handler:{ (UIAlertAction)in
             self.entityType = "tvSeason"
             self.searchBarTextDidEndEditing(self.searchBar)
+            self.changeRightButtonTitle(title: self.entityType.uppercased())
         }))
         
         alert.addAction(UIAlertAction(title:"software", style: .default , handler:{ (UIAlertAction)in
             self.entityType = "software"
             self.searchBarTextDidEndEditing(self.searchBar)
+            self.changeRightButtonTitle(title: self.entityType.uppercased())
         }))
         
         alert.addAction(UIAlertAction(title:"ebook", style: .default , handler:{ (UIAlertAction)in
             self.entityType = "ebook"
             self.searchBarTextDidEndEditing(self.searchBar)
+            self.changeRightButtonTitle(title: self.entityType.uppercased())
         }))
        
         self.present(alert, animated: true, completion: {

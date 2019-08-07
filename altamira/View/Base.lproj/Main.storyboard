@@ -33,16 +33,16 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="fb7-dV-1tQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="0dM-yR-h1Y"/>
-                            <constraint firstItem="SLf-B8-gTV" firstAttribute="top" secondItem="fb7-dV-1tQ" secondAttribute="bottom" id="18K-JC-FXF"/>
                             <constraint firstItem="SLf-B8-gTV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9hq-xi-tvq"/>
                             <constraint firstItem="fb7-dV-1tQ" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.1" id="DIS-el-2J6"/>
-                            <constraint firstItem="fb7-dV-1tQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="DeD-yv-nGs"/>
                             <constraint firstItem="RLl-cw-63e" firstAttribute="centerX" secondItem="SLf-B8-gTV" secondAttribute="centerX" id="JDO-CV-7ex"/>
+                            <constraint firstItem="SLf-B8-gTV" firstAttribute="top" secondItem="fb7-dV-1tQ" secondAttribute="bottom" id="TBU-hu-gWy"/>
                             <constraint firstItem="RLl-cw-63e" firstAttribute="width" secondItem="SLf-B8-gTV" secondAttribute="width" id="XDr-6q-5gl"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="SLf-B8-gTV" secondAttribute="bottom" id="YeZ-OH-EEB"/>
                             <constraint firstItem="RLl-cw-63e" firstAttribute="centerY" secondItem="SLf-B8-gTV" secondAttribute="centerY" id="dmS-Fc-fzl"/>
                             <constraint firstItem="SLf-B8-gTV" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="hJs-dW-wTr"/>
                             <constraint firstItem="RLl-cw-63e" firstAttribute="height" secondItem="SLf-B8-gTV" secondAttribute="height" id="mOk-eP-QBa"/>
+                            <constraint firstItem="fb7-dV-1tQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="rUR-aL-NMo"/>
                             <constraint firstItem="fb7-dV-1tQ" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="vvd-Na-VV0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
